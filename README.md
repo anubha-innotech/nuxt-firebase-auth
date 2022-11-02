@@ -67,3 +67,16 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+
+
+NUXT-FIREBASE-AUTH
+1. installing nuxt-app 
+npx create-nuxt-app <project-name>
+or
+npm init nuxt-app <project-name>
+
+2. install nuxt/firebase
+npm install firebase
+and
+npm install @nuxtjs/firebase
+

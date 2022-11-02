@@ -41,16 +41,43 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
   ],
+  router: {
+    middleware: ['auth']
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyC2HOpbvjhToeDE9UMNsRBSvGkN6cw6WeI",
+          authDomain: "nuxt-firebase-auth-6bd75.firebaseapp.com",
+          projectId: "nuxt-firebase-auth-6bd75",
+          storageBucket: "nuxt-firebase-auth-6bd75.appspot.com",
+          messagingSenderId: "296018728187",
+          appId: "1:296018728187:web:cb55d6345d3aa599bd0c5e",
+          measurementId: "G-RXL047WJET"
+        },
+        services: {
+          auth: {
+            persistence: 'local', // default
+            initialize: {
+              onAuthStateChangedAction: 'onAuthStateChangedAction',
+              subscribeManually: false
+            },
+            ssr: false, // default
+          }
+        }
+      }
+    ]
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
