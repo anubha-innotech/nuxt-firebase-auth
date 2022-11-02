@@ -35,6 +35,20 @@
               >Forgot Password</v-btn
             >
           </v-card-actions>
+
+          <v-divider class="my-3"></v-divider>
+          <v-btn
+            class="login-button my-2 pa-2"
+            width="100%"
+            @click="googleLogin"
+            depressed
+            large
+            color="transparent"
+            >
+            <v-icon color="black" large>
+                mdi-google
+            </v-icon>&nbsp;Login with Google
+          </v-btn>
         </v-card>
         <v-snackbar
           :timeout="4000"
@@ -65,6 +79,18 @@
       login() {
         let that = this
         this.$fire.auth.signInWithEmailAndPassword(this.auth.email, this.auth.password)
+        .catch(function (error){
+          that.snackbarText = error.message
+          that.snackbar = true
+        }).then((user) => {
+          //we are signed in
+          $nuxt.$router.push('/')
+        })
+      },
+      googleLogin() {
+        let that = this
+        const provider = new $nuxt.$fireModule.auth.GoogleAuthProvider()
+        this.$fire.auth.signInWithPopup(provider)
         .catch(function (error){
           that.snackbarText = error.message
           that.snackbar = true
